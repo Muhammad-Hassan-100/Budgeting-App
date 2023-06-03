@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="./styles.css">
+      <link rel="icon" type="image/x-icon" href="./images/expenses.png">
+      <title>Budgeting App</title>
+</head>
+
+<body>
+      <div class="main_box">
+            <div class="sub_mian_box">
+                  <h1>Budgeting App By Hassan</h1>
+            </div>
+            <hr>
+            <div class="sub_mian_box">
+                  <div class="budget_form">
+                        <div class="budget_form_main1">
+                              <h3>Budget Form</h3>
+                        </div>
+                        <div class="budget_form_main2">
+                              <div class="budget_form_main2_text">
+                                    <h2>Budget</h2>
+                              </div>
+                              <div>
+                                    <p class="hide error" id="input_budget_error">
+                                          Value cannot be empty or negative
+                                    </p>
+                              </div>
+                              <div class="budget_form_main2_input">
+                                    <input type="number" id="Total_Amount" name="Amount"
+                                          placeholder="Enter Total Amount" required>
+                              </div>
+                              <div class="budget_form_main2_button">
+                                    <button class="button" id="Set_Budget_Button">Set Budget</button>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+
+
+            <div class="sub_mian_box">
+                  <div class="expense_detail1">
+                        <div class="expense_detail2">
+                              <div class="expense_detail_main">
+                                    <h3>Expense Detail</h3>
+                              </div>
+                              <div>
+                                    <p class="hide error" id="input_expense_error">
+                                          Value cannot be empty
+                                    </p>
+                              </div>
+                              <div class="expense_detail_main">
+                                    <div class="expense_detail_main_form">
+                                          <label for="title">Title<span>*</span></label>
+                                          <input type="text" name="title" id="title" placeholder="Enter Title" required>
+                                    </div>
+                              </div>
+                              <div class="expense_detail_main">
+                                    <div class="expense_detail_main_form">
+                                          <label for="amount">Amount<span>*</span></label>
+                                          <input type="number" name="amount" id="expense_amount"
+                                                placeholder="Enter Amount" required>
+                                    </div>
+
+                              </div>
+                              <div class="expense_detail_main">
+                                    <div class="expense_detail_main_form">
+                                          <label for="date">Date<span>*</span></label>
+                                          <input type="date" name="date" id="expense_date" placeholder="Enter Date"
+                                                required>
+                                    </div>
+
+                              </div>
+                              <div class="expense_detail_main">
+                                    <button id="add_expense">Add Expense</button>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+
+            <div class="sub_mian_box">
+                  <div class="Final_Output">
+                        <div class="Final_Output_main1">
+                              <h1>
+                                    Final Output
+                              </h1>
+                        </div>
+                        <div class="Final_Output_main2">
+                              <div>
+                                    <p>Total Budget</p>
+                                    <span id="budget_amount">0</span>
+                              </div>
+                              <div>
+                                    <p>Expenses</p>
+                                    <span id="expenditure_value">0</span>
+                              </div>
+                              <div>
+                                    <p>Balance</p>
+                                    <span id="balance_amount">0</span>
+                              </div>
+                        </div>
+                        <div class="list">
+                              <h3>Expense List</h3>
+                              <div class="list_index">
+                                    <div class="list_index_text  list_index_title">Title</div>
+                                    <div class="list_index_text  list_index_amount">Amount</div>
+                                    <div class="list_index_text  list_index_date">Date</div>
+                                    <div class="list_index_text  list_index_edit">Edit</div>
+                                    <div class="list_index_text  list_index_delete">Delete</div>
+                              </div>
+                              <hr style="margin-top: -0.8rem;">
+                              <div class="list-container" id="budget_list"></div>
+                        </div>
+                  </div>
+            </div>
+      </div>
+
+
+      <script src="app.js"></script>
+</body>
+
+</html>
