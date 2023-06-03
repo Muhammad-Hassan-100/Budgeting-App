@@ -16,7 +16,7 @@ body {
       flex-direction: column;
       justify-content: space-around;
       align-items: center;
-      overflow-y: hidden;
+      overflow-x: hidden;
 }
 
 .sub_mian_box {
