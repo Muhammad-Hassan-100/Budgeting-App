@@ -12,24 +12,18 @@ let balanceAmount = document.getElementById("balance_amount");
 let budgetList = document.getElementById("budget_list");
 let tempAmount = 0;
 
-// Set Budget Part
 setBudgetButton.addEventListener("click", function () {
       tempAmount = totalAmount.value;
-      // Empty or negative input
       if (tempAmount === "" || tempAmount < 0) {
             inputBudgetError.classList.remove("hide");
       } else {
             inputBudgetError.classList.add("hide");
-            // Set Budget
             budgetAmount.innerText = tempAmount;
-            // Set Balance
             balanceAmount.innerText = tempAmount - expenditureValue.innerText;
-            // Clear Input Box
             totalAmount.value = "";
       }
 });
 
-// Function To Disable Edit and Delete Button
 function disableButtons(bool) {
       let editButtons = document.getElementsByClassName("edit");
       Array.from(editButtons).forEach(function (element) {
@@ -37,7 +31,6 @@ function disableButtons(bool) {
       });
 }
 
-// Function To Modify List Elements
 function modifyElement(element, edit = false) {
       let parentDiv = element.parentElement;
       let currentBalance = balanceAmount.innerText;
@@ -55,7 +48,6 @@ function modifyElement(element, edit = false) {
       parentDiv.remove();
 }
 
-// Function To Create List
 function listCreator(expenseName, expenseValue, expenseDate) {
       let sublistContent = document.createElement("div");
       sublistContent.classList.add("sublist-content", "flex-space");
@@ -81,26 +73,18 @@ function listCreator(expenseName, expenseValue, expenseDate) {
       budgetList.appendChild(sublistContent);
 }
 
-// Function To Add Expenses
 addExpenseButton.addEventListener("click", function () {
-      // Empty checks
       if (!expenseAmount.value || !title.value || !expenseDate.value) {
             inputExpenseError.classList.remove("hide");
             return false;
       }
-      // Enable buttons
       disableButtons(false);
-      // Expense
       let expenditure = parseInt(expenseAmount.value);
-      // Total expense (existing + new)
       let sum = parseInt(expenditureValue.innerText) + expenditure;
       expenditureValue.innerText = sum;
-      // Total balance (budget - total expense)
       const totalBalance = tempAmount - sum;
       balanceAmount.innerText = totalBalance;
-      // Create list
       listCreator(title.value, expenseAmount.value, expenseDate.value);
-      // Empty inputs
       title.value = "";
       expenseAmount.value = "";
       expenseDate.value = "";
@@ -108,20 +92,22 @@ addExpenseButton.addEventListener("click", function () {
 
 
 // Disable right-click
-document.addEventListener('contextmenu', (e) => e.preventDefault());
+document.addEventListener('contextmenu', function (e) {
+      e.preventDefault();
+});
 
 function ctrlShiftKey(e, keyCode) {
       return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
 }
 
-document.onkeydown = (e) => {
-      // Disable F12, Ctrl + Shift + I, Ctrl + Shift + J, Ctrl + U
+document.onkeydown = function (e) {
       if (
-            event.keyCode === 123 ||
+            e.keyCode === 123 ||
             ctrlShiftKey(e, 'I') ||
             ctrlShiftKey(e, 'J') ||
             ctrlShiftKey(e, 'C') ||
             (e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))
-      )
+      ) {
             return false;
+      }
 };
